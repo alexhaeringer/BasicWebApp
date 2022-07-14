@@ -16,7 +16,7 @@ public class QueryProcessor {
         } else if (query.contains("what is ") && query.contains("+")){
             return query.substring(9) + query.substring(11);
         } else { // TODO extend the programm here
-                return "";
+            return "";
         }
     }
 }
