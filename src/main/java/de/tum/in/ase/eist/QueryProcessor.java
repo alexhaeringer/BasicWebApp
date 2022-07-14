@@ -3,8 +3,10 @@ package de.tum.in.ase.eist;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static java.lang.Integer.parseInt;
+import static java.lang.Math.max;
 
 @Service
 public class QueryProcessor {
@@ -20,6 +22,15 @@ public class QueryProcessor {
         } else if (query.contains("plus")){
             String[] query2 = query.split(" ");
             return parseInt(query2[3]) + parseInt(query2[5]) + "";
+        } else if (query.contains("which of the following numbers is the largest:")){
+            String[] query2 = query.split(":");
+            int maxi = -1;
+
+            for(int i = 1; i<query2.length; i++) {
+                maxi = Math.max(maxi, parseInt(query2[i]));
+            }
+
+            return maxi + "";
         } else { // TODO extend the programm here
             return "";
         }
